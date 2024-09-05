@@ -79,7 +79,7 @@ class MenuViewController: UIViewController {
     }
     
     func fetchData() {
-        let urlStr = "https://raw.githubusercontent.com/ggisfun/Kebuke/main/kebuke_menu.json"
+        let urlStr = "https://raw.githubusercontent.com/ggisfun/KebukeJson/main/kebuke_menu.json"
         if let url = URL(string: urlStr) {
             let request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 10)
             URLSession.shared.dataTask(with: request) { data, response , error in
