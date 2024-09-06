@@ -25,7 +25,6 @@
 		47E081802C8878AB005E22C1 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0817F2C8878AB005E22C1 /* RecordViewController.swift */; };
 		47E081822C88DB42005E22C1 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E081812C88DB42005E22C1 /* RecordTableViewCell.swift */; };
 		47E0818D2C8A39DB005E22C1 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0818C2C8A39D5005E22C1 /* APIKey.swift */; };
-		47E081932C8AA221005E22C1 /* APIKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47E081922C8AA221005E22C1 /* APIKey.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +47,6 @@
 		47E0817F2C8878AB005E22C1 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		47E081812C88DB42005E22C1 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		47E0818C2C8A39D5005E22C1 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
-		47E081922C8AA221005E22C1 /* APIKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKey.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +105,6 @@
 		47E081872C8A2D24005E22C1 /* APIKey */ = {
 			isa = PBXGroup;
 			children = (
-				47E081922C8AA221005E22C1 /* APIKey.plist */,
 				47E0818C2C8A39D5005E22C1 /* APIKey.swift */,
 			);
 			path = APIKey;
@@ -179,7 +176,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4703E2512C7F08B20009E80A /* Assets.xcassets in Resources */,
-				47E081932C8AA221005E22C1 /* APIKey.plist in Resources */,
 				4703E2542C7F08B20009E80A /* Base in Resources */,
 				4703E24F2C7F08B00009E80A /* Base in Resources */,
 			);
