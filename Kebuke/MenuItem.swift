@@ -21,7 +21,7 @@ struct DrinkInfo: Codable {
     let m: Int
     let l: Int
     let description: String
-    let sugar_info: SugarInfo
+    let sugar_info: SugarInfo?
     let hot: Bool
     let notes: String?
     let imgUrl: URL

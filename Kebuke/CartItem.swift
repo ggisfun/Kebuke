@@ -16,6 +16,22 @@ struct CartInfo: Codable {
     var imgUrl: URL
     var price: Int
     var quantity: Int
+    var sizeM: Int
+    var sizeL: Int
+    var description: String
+    var hot: Bool
+    
+    static func saveCarts(_ carts: [CartInfo]) {
+        let encoder = JSONEncoder()
+        guard let data = try? encoder.encode(carts) else { return }
+        UserDefaults.standard.set(data, forKey: "carts")
+    }
+    
+    static func loadCarts() -> [CartInfo]? {
+        guard let data = UserDefaults.standard.data(forKey: "carts") else { return nil }
+        let decoder = JSONDecoder()
+        return try? decoder.decode([CartInfo].self, from: data)
+    }
 }
 
 struct OrderData: Codable {

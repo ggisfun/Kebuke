@@ -26,6 +26,8 @@
 		47E081822C88DB42005E22C1 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E081812C88DB42005E22C1 /* RecordTableViewCell.swift */; };
 		47E0818D2C8A39DB005E22C1 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0818C2C8A39D5005E22C1 /* APIKey.swift */; };
 		47E081952C8AA317005E22C1 /* APIKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47E081942C8AA317005E22C1 /* APIKey.plist */; };
+		47E081972C904152005E22C1 /* DrinkOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E081962C90414B005E22C1 /* DrinkOption.swift */; };
+		47E081BD2C965278005E22C1 /* LoginItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E081BC2C965271005E22C1 /* LoginItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		47E081812C88DB42005E22C1 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		47E0818C2C8A39D5005E22C1 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		47E081942C8AA317005E22C1 /* APIKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKey.plist; sourceTree = "<group>"; };
+		47E081962C90414B005E22C1 /* DrinkOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkOption.swift; sourceTree = "<group>"; };
+		47E081BC2C965271005E22C1 /* LoginItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 			children = (
 				4703E2472C7F08B00009E80A /* AppDelegate.swift */,
 				4703E2492C7F08B00009E80A /* SceneDelegate.swift */,
+				47E081BC2C965271005E22C1 /* LoginItem.swift */,
+				47E081962C90414B005E22C1 /* DrinkOption.swift */,
 				4703E25F2C7F13670009E80A /* MenuItem.swift */,
 				4703E28E2C84A7390009E80A /* CartItem.swift */,
 				4703E24D2C7F08B00009E80A /* Main.storyboard */,
@@ -216,6 +222,7 @@
 			files = (
 				4703E2482C7F08B00009E80A /* AppDelegate.swift in Sources */,
 				4703E24A2C7F08B00009E80A /* SceneDelegate.swift in Sources */,
+				47E081BD2C965278005E22C1 /* LoginItem.swift in Sources */,
 				4703E28F2C84A7400009E80A /* CartItem.swift in Sources */,
 				47E081802C8878AB005E22C1 /* RecordViewController.swift in Sources */,
 				47E081822C88DB42005E22C1 /* RecordTableViewCell.swift in Sources */,
@@ -224,6 +231,7 @@
 				4703E25E2C7F12150009E80A /* MenuCollectionViewCell.swift in Sources */,
 				47E0818D2C8A39DB005E22C1 /* APIKey.swift in Sources */,
 				4703E2602C7F136D0009E80A /* MenuItem.swift in Sources */,
+				47E081972C904152005E22C1 /* DrinkOption.swift in Sources */,
 				4703E2932C868CEB0009E80A /* CartTableViewCell.swift in Sources */,
 				4703E2912C868BE80009E80A /* CartViewController.swift in Sources */,
 				4703E2652C7F95CF0009E80A /* OrderViewController.swift in Sources */,

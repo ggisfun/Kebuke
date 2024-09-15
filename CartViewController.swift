@@ -15,6 +15,7 @@ class CartViewController: UIViewController {
     
     weak var delegate: CartViewControllerDelegate?
     
+    
     var carts = [CartInfo]()
     var userName = ""
     
@@ -27,7 +28,32 @@ class CartViewController: UIViewController {
             orderConfirmButton.isHidden = true
         }
     }
-
+    
+    @IBAction func unwindToCartViewController(_ unwindSegue: UIStoryboardSegue) {
+        if let source = unwindSegue.source as? OrderViewController,
+           let cart = source.cart,
+           let index = source.cartIndex{
+            carts[index] = cart
+            cartTableView.reloadData()
+            delegate?.cartViewController(self, didUpdateCart: carts)
+        }
+    }
+    
+    @IBSegueAction func showOrderEdit(_ coder: NSCoder) -> OrderViewController? {
+        guard let item = cartTableView.indexPathForSelectedRow?.row else {return nil}
+        
+        let drink = Drink(name: carts[item].drinkName, info: DrinkInfo(m: carts[item].sizeM, l: carts[item].sizeL, description: carts[item].description, sugar_info: nil, hot: carts[item].hot, notes: nil, imgUrl: carts[item].imgUrl))
+        
+        let controller =  OrderViewController(coder: coder)
+        
+        controller?.drinkData = drink
+        controller?.cart = carts[item]
+        controller?.showType = 1
+        controller?.cartIndex = item
+        
+        return controller
+    }
+    
     @IBAction func quantityAdd(_ sender: UIButton) {
         let row = sender.tag
         let singlePrice = carts[row].price / carts[row].quantity
@@ -40,12 +66,17 @@ class CartViewController: UIViewController {
     }
     
     @IBAction func quantityMinus(_ sender: UIButton) {
-        let row = sender.tag
-        guard carts[row].quantity > 1 else { return }
+        let row = sender.tag        
         let singlePrice = carts[row].price / carts[row].quantity
         let quantity = carts[row].quantity - 1
-        carts[row].quantity = quantity
-        carts[row].price = singlePrice * quantity
+        
+        if quantity == 0 {
+            carts.remove(at: row)
+            orderConfirmButton.isHidden = true
+        }else{
+            carts[row].quantity = quantity
+            carts[row].price = singlePrice * quantity
+        }
         
         cartTableView.reloadData()
         delegate?.cartViewController(self, didUpdateCart: carts)
@@ -165,9 +196,25 @@ extension CartViewController: UITableViewDataSource {
         
         cell.quantityAddButton.tag = indexPath.row
         cell.quantityMinusButton.tag = indexPath.row
+        if item.quantity > 1 {
+            cell.quantityMinusButton.setImage(UIImage(systemName: "minus"), for: .normal)
+        }else {
+            cell.quantityMinusButton.setImage(UIImage(systemName: "trash"), for: .normal)
+        }
         
         updatePrice()
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        carts.remove(at: indexPath.row)
+        updatePrice()
+        if carts.count == 0 {
+            orderConfirmButton.isHidden = true
+        }
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        tableView.reloadData()
+        delegate?.cartViewController(self, didUpdateCart: carts)
     }
     
     

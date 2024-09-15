@@ -18,12 +18,26 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     
     var userName = ""
-    var carts = [CartInfo]()
+    var carts = [CartInfo]() {
+        didSet {
+            CartInfo.saveCarts(carts)
+        }
+    }
     var drinkList = [Drink]()
     var categoryIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //載入購物車資料
+        if let carts = CartInfo.loadCarts() {
+            self.carts = carts
+            if carts.count > 0 {
+                showBadge(count: carts.count)
+            }else{
+                badgeLabel.removeFromSuperview()
+            }
+        }
 
         //使用者名稱
         userNameLabel.text = "Hi!\n\(userName)"
@@ -75,6 +89,7 @@ class MenuViewController: UIViewController {
         guard let item = menuCollectionView.indexPathsForSelectedItems?[0].item else {return nil}
         let controller =  OrderViewController(coder: coder)
         controller?.drinkData = drinkList[item]
+        controller?.showType = 0
         return controller
     }
     

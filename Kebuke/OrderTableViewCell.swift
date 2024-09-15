@@ -21,9 +21,6 @@ class OrderTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-        checkBoxImageView.image = selected ? UIImage(named: "check") : UIImage(named: "checkbox")
-                
     }
-    
 
 }
