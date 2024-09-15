@@ -21,14 +21,14 @@ struct CartInfo: Codable {
     var description: String
     var hot: Bool
     
-    static func saveCarts(_ carts: [CartInfo]) {
+    static func saveCarts(_ carts: [CartInfo], _ userName: String) {
         let encoder = JSONEncoder()
         guard let data = try? encoder.encode(carts) else { return }
-        UserDefaults.standard.set(data, forKey: "carts")
+        UserDefaults.standard.set(data, forKey: "carts_\(userName)")
     }
     
-    static func loadCarts() -> [CartInfo]? {
-        guard let data = UserDefaults.standard.data(forKey: "carts") else { return nil }
+    static func loadCarts(_ userName: String) -> [CartInfo]? {
+        guard let data = UserDefaults.standard.data(forKey: "carts_\(userName)") else { return nil }
         let decoder = JSONDecoder()
         return try? decoder.decode([CartInfo].self, from: data)
     }

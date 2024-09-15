@@ -20,7 +20,7 @@ class MenuViewController: UIViewController {
     var userName = ""
     var carts = [CartInfo]() {
         didSet {
-            CartInfo.saveCarts(carts)
+            CartInfo.saveCarts(carts, userName)
         }
     }
     var drinkList = [Drink]()
@@ -30,7 +30,7 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
         
         //載入購物車資料
-        if let carts = CartInfo.loadCarts() {
+        if let carts = CartInfo.loadCarts(userName) {
             self.carts = carts
             if carts.count > 0 {
                 showBadge(count: carts.count)

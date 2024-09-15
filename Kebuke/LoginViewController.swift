@@ -28,6 +28,9 @@ class LoginViewController: UIViewController {
         loadingView.color = .white
         view.addSubview(loadingView)
         
+        registerPasswordTextField.isSecureTextEntry = true
+        loginPasswordTextField.isSecureTextEntry = true
+        
         registerView.isHidden = true
     }
     
