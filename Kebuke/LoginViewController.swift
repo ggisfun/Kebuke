@@ -17,10 +17,17 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginNameTextField: UITextField!
     @IBOutlet weak var loginPasswordTextField: UITextField!
     
+    let loadingView = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        loadingView.frame = view.bounds
+        loadingView.backgroundColor = .darkGray.withAlphaComponent(0.5)
+        loadingView.style = .large
+        loadingView.color = .white
+        view.addSubview(loadingView)
+        
         registerView.isHidden = true
     }
     
@@ -34,6 +41,11 @@ class LoginViewController: UIViewController {
 //        UIView.animate(withDuration: 0.1) {
 //            
 //        }
+        loginNameTextField.text?.removeAll()
+        loginPasswordTextField.text?.removeAll()
+        
+        loginNameTextField.placeholder?.removeAll()
+        loginPasswordTextField.placeholder?.removeAll()
     }
     
     @IBAction func showLoginView(_ sender: Any) {
@@ -70,11 +82,13 @@ class LoginViewController: UIViewController {
         
         let registerData = User(user:UserInfo(login: userName, email: email, password: password))
         let url = APIURL.register.url
-        
+        view.endEditing(true)
         Task {
             do {
+                loadingView.startAnimating()
                 let resultData = try await sendRequest(postData: registerData, postUrl: url)
                 updateUI(resultData: resultData)
+                loadingView.stopAnimating()
             } catch {
                 print(error)
             }
@@ -101,13 +115,15 @@ class LoginViewController: UIViewController {
             present(alert, animated: true)
             return
         }
-        
+        view.endEditing(true)
         let loginData = User(user:UserInfo(login: userName, email: nil, password: password))
         let url = APIURL.login.url
         
         Task {
             do {
+                loadingView.startAnimating()
                 let resultData = try await sendRequest(postData: loginData, postUrl: url, userToken: token)
+                loadingView.stopAnimating()
                 if resultData.errorCode == nil {
                     performSegue(withIdentifier: "showMenu", sender: nil)
                 }else{

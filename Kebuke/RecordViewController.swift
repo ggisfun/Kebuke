@@ -11,9 +11,14 @@ class RecordViewController: UIViewController {
 
     @IBOutlet weak var recordTableView: UITableView!
     var orderRecord = [Record]()
+    let loadingView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadingView.style = .large
+        loadingView.color = UIColor.gray
+        recordTableView.backgroundView = loadingView
         
         //獲取訂單記錄
         fetchData()
@@ -27,6 +32,7 @@ class RecordViewController: UIViewController {
     }
     
     func fetchData() {
+        loadingView.startAnimating()
         let url = URL(string: "https://api.airtable.com/v0/appIJuX7xoYEEZrDd/Kebuke?sort%5B0%5D%5Bfield%5D=orderDate&sort%5B0%5D%5Bdirection%5D=desc")!
         var request = URLRequest(url: url)
         request.setValue("Bearer \(APIKey.default)", forHTTPHeaderField: "Authorization")
@@ -52,6 +58,7 @@ class RecordViewController: UIViewController {
                 self.orderRecord = orderData.records
                 DispatchQueue.main.async {
                     self.recordTableView.reloadData()
+                    self.loadingView.stopAnimating()
                 }
                                                                 
             } catch {
