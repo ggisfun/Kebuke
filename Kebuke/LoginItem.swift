@@ -48,7 +48,7 @@ enum APIURL {
     }
 }
 
-let apiKey = "90dc5273c7740a60bd74dffbb2acdfc6"
+let apiKey = "FavQs ApiKey"
 
 enum ErrorMessage: Error, LocalizedError {
     case statusCodeError

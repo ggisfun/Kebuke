@@ -41,9 +41,7 @@ class LoginViewController: UIViewController {
     @IBAction func showRegisterView(_ sender: Any) {
         registerView.isHidden = false
         loginView.isHidden = true
-//        UIView.animate(withDuration: 0.1) {
-//            
-//        }
+        
         loginNameTextField.text?.removeAll()
         loginPasswordTextField.text?.removeAll()
         
